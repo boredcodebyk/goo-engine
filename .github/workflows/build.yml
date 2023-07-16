@@ -18,12 +18,14 @@ jobs:
         run: |
           mkdir -p $APK_BUILD_DIR/blender
           cp -r . $APK_BUILD_DIR/blender
-          cd $APK_BUILD_DIR
+          ls $APK_BUILD_DIR
+          ls $APK_BUILD_DIR/blender
+          cd $APK_BUILD_DIR/blender
       - name: SVN and cd to work dir
         run: |
-          mkdir lib
-          svn co https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/win64_vc15/ lib/
-          cd blender
+          mkdir ../lib
+          svn co https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/win64_vc15/ ../lib/
+
       - run: ls
       - run: ./make.bat update
       
