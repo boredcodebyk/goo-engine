@@ -9,10 +9,11 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
+      - run: git submodule update --init --recursive
       - run: ls
-      - run: make.bat update
+      - run: ./make.bat update
       
-      - run: make.bat
+      - run: ./make.bat
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
