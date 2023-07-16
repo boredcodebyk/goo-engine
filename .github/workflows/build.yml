@@ -10,9 +10,9 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v3
       - run: ls
-      - run: make update
+      - run: make.bat update
       
-      - run: make
+      - run: make.bat
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
