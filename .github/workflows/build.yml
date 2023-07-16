@@ -21,7 +21,8 @@ jobs:
           cd $APK_BUILD_DIR
       - name: SVN and cd to work dir
         run: |
-          svn co https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/
+          mkdir lib
+          svn co https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/win64_vc15/ lib/
           cd blender
       - run: ls
       - run: ./make.bat update
