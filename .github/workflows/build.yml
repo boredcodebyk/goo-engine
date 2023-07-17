@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  APK_BUILD_DIR: "/tmp/build"
+  APK_BUILD_DIR: "tmp\build"
   
 jobs:
   build:
@@ -13,18 +13,20 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v3
       - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
       - run: git submodule update --init --recursive
       - name: Copy files to env.APK_BUILD_DIR
         run: |
-          mkdir -p $APK_BUILD_DIR/blender
-          cp -r . $APK_BUILD_DIR/blender
+          cd
+          mkdir $APK_BUILD_DIR
+          xcopy .\ .\$APK_BUILD_DIR /s /e /h
           ls $APK_BUILD_DIR
-          ls $APK_BUILD_DIR/blender
-          cd $APK_BUILD_DIR/blender
+          cd $APK_BUILD_DIR
       - name: SVN and cd to work dir
         run: |
-          mkdir ../lib
-          svn co https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/win64_vc15/ ../lib/
+          mkdir ..\lib
+          svn co https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/win64_vc15/ ..\lib\
 
       - run: ls
       - run: ./make.bat update
@@ -35,6 +37,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: release
-          path: build_release/bin/
+          path: build_release\bin\
 
   
