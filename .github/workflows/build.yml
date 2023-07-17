@@ -2,8 +2,6 @@ name: Build Release
 
 on:
   workflow_dispatch:
-
-
   
 jobs:
   build:
@@ -31,6 +29,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: release
-          path: build_release\bin\
+          path: build_windows/bin/
 
   
