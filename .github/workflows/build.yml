@@ -16,12 +16,7 @@ jobs:
           python-version: '3.10' 
       - run: git submodule update --init --recursive
       - name: Copy files to env.APK_BUILD_DIR
-        run: |
-          cd
-          mkdir temp
-          xcopy .\ .\temp /s /e /h
-          ls $temp
-          cd $temp
+        run: cd
       - name: SVN and cd to work dir
         run: |
           mkdir ..\lib
