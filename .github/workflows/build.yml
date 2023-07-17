@@ -19,9 +19,9 @@ jobs:
         run: cd
       - name: SVN and cd to work dir
         run: |
-          mkdir ..\lib
-          svn co https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/win64_vc15/ ..\lib\
-
+          mkdir ../lib
+          svn co https://svn.blender.org/svnroot/bf-blender/tags/blender-3.6-release/lib/win64_vc15/ ../lib/win64_vc15
+      - run: mkdir ../build_release
       - run: ls
       - run: ./make.bat update
       
